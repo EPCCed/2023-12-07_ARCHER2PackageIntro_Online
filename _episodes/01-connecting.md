@@ -22,41 +22,21 @@ login.archer2.ac.uk
 ```
 {: .language-bash}
 
-Access to ARCHER2 is via SSH using **both** a password and a passphrase-protected SSH key pair.
+Access to ARCHER2 is via SSH using **both** a time-based code (TOTP) and a passphrase-protected SSH key pair.
 
-## Passwords and password policy
+## TOTP
 
-When you first get an ARCHER2 account, you will get a single-use password from the 
-SAFE which you will be asked to change to a password of your choice. Your chosen 
-password must have the required complexity as specified in the
-[ARCHER2 Password Policy](https://www.archer2.ac.uk/about/policies/passwords_usernames.html).
+A time based one time password (TOTP) is a credential that changes value over time (on ARCHER2, the code changes
+every 30 seconds). Users link a TOTP app on their mobile device or laptop to their ARCHER2 account using an
+initial *seed* (usually provided by a QR code that you scan but can also be a string of characters) and this
+then allows the app to produce codes that match the ones known by ARCHER2.
 
-The password policy has been chosen to allow users to use both complex, shorter passwords and
-long, but comparatively simple passwords. For example, passwords in the style of both
-`LA10!£lsty` and `horsebatterystaple` would be supported.
-
-> ## Picking a good password
-> Which of these passwords would be a good, valid choice according to the ARCHER2 Password
-> Policy?
-> 
-> 1. `mypassword`
-> 2. `rainbowllamajumping`
-> 3. `A!94ufskl$?`
-> 4. `horsebatterystaple`
-> 
-> > ## Solution
-> >
-> > 1. **No** This would not be accepted or a good choice as it is too short and is made up of obvious words
-> > 2. **Yes** This would be a good choice as it is long enough and easy to remember
-> > 3. **Yes** This would be accepted but may be difficult to remember and type (though you could use a password manager to store it)
-> > 4. **No** While this meets the criteria, it is a well known example from a [popular web comic](https://xkcd.com/936/) and so would not be accepted
-> >
-> {: .solution}
-{: .challenge}
+When you create an account on ARCHER2, you will need to register TOPT access in a suitable app. Instructions for
+doing this [are available in the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account).
 
 ## SSH keys
 
-As well as password access, users are required to add the public part of an SSH key pair to access ARCHER2.
+As well as TOTP, users are required to add the public part of an SSH key pair to access ARCHER2.
 The public part of the key pair is associated with your account using the SAFE web interface.
 See the ARCHER2 User and Best Practice Guide for information on how to create SSH key pairs
 and associate them with your account:
@@ -64,17 +44,13 @@ and associate them with your account:
 * [Connecting to ARCHER2](https://docs.archer2.ac.uk/user-guide/connecting/)
 
 > ## Log in to ARCHER2
-> Once you have managed to setup your SSH key pair and have retrieved your initial password from
-> SAFE, try to log into ARCHER2 for the first time using the command:
+> Once you have managed to setup your TOTP and SSH key pair try to log into ARCHER2 for the
+> first time using the command:
 > 
 > ```
 > ssh -i /path/to/sshkey username@login.archer2.ac.uk
 > ```
 >
-> The first time you login, you will be prompted to change your password. You will need
-> to enter your initial password from SAFE again (this will be referred to as your LDAP
-> password). Once you have entered this, you will be prompted to choose a new password
-> which you must enter twice.
 {: .challenge}
 
 ## Data transfer services: scp, rsync
