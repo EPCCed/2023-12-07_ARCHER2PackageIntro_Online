@@ -22,7 +22,9 @@ login.archer2.ac.uk
 ```
 {: .language-bash}
 
-Access to ARCHER2 is via SSH using **both** a time-based code (TOTP) and a passphrase-protected SSH key pair.
+Access to ARCHER2 is via SSH using **both** a time-based code (TOTP) and a passphrase-protected SSH key pair. As an
+additional security measure, newly created accounts must also use a one time password retrieved from the SAFE 
+web adminsitration service for the first ever login.
 
 ## TOTP
 
@@ -33,6 +35,9 @@ then allows the app to produce codes that match the ones known by ARCHER2.
 
 When you create an account on ARCHER2, you will need to register TOPT access in a suitable app. Instructions for
 doing this [are available in the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account).
+
+You only need to enter the TOTP once every 10 hours for each account and local host that you connect to 
+ARCHER2 from.
 
 ## SSH keys
 
@@ -51,6 +56,13 @@ and associate them with your account:
 > ssh -i /path/to/sshkey username@login.archer2.ac.uk
 > ```
 >
+> The first time you login, you will be prompted to change your password. You will need
+> to enter your initial password from SAFE again (this will be referred to as your LDAP
+> password). Once you have entered this, you will be prompted to choose a new password
+> which you must enter twice. The new password you enter must conform to the
+> [ARCHER2 Password Policy](https://www.archer2.ac.uk/about/policies/passwords_usernames.html).
+> Once you have changed the passord in this way, you should be able to log on with just
+> the SSH key and TOTP combination.
 {: .challenge}
 
 ## Data transfer services: scp, rsync
