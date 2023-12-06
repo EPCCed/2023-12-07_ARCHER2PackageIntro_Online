@@ -243,7 +243,7 @@ JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 ```
 {: .output}
 
-You can show just your jobs with `squeue -u $USER`.
+You can show just your jobs with `squeue --me`.
 
 ### Cancelling jobs with `scancel`
 
