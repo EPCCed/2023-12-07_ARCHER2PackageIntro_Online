@@ -75,8 +75,7 @@ If you prefer to see the state of individual nodes, you can use the `sinfo -N -l
 
 > ## Lots to look at!
 > Warning! The `sinfo -N -l` command will produce a lot of output as there are 5860 individual 
-> nodes on the current ARCHER2 system! (It will be even worse on the full system when there will be
-> over 5,860 nodes.) 
+> nodes on the current ARCHER2 system!
 {: .callout}
 
 ```
