@@ -118,10 +118,10 @@ Here are the main points you should consider:
 > > auser@login01-nmn:~> zip -0r large_data_output.zip large_data_output/
 > > ```
 > > {: .language-bash}
-> > To verify the archive is valid, you would use the `zip` command again, this time with the `-t` 
+> > To verify the archive is valid, you would use the `zip` command again, this time with the `-T` 
 > > option:
 > > ```
-> > auser@login01-nmn:~> zip -t large_data_output.zip
+> > auser@login01-nmn:~> zip -T large_data_output.zip
 > > ```
 > > {: .language-bash}
 > {: .solution}
