@@ -33,7 +33,7 @@ every 30 seconds). Users link a TOTP app on their mobile device or laptop to the
 initial *seed* (usually provided by a QR code that you scan but can also be a string of characters) and this
 then allows the app to produce codes that match the ones known by ARCHER2.
 
-When you create an account on ARCHER2, you will need to register TOPT access in a suitable app. Instructions for
+When you create an account on ARCHER2, you will need to register TOTP access in a suitable app. Instructions for
 doing this [are available in the SAFE documentation](https://epcced.github.io/safe-docs/safe-for-users/#how-to-turn-on-mfa-on-your-machine-account).
 
 You only need to enter the TOTP once every 10 hours for each account and local host that you connect to 
