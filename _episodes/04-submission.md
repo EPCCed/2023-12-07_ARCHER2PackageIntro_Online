@@ -23,7 +23,6 @@ available to users. The main commands you will use with Slurm on ARCHER2 are:
 * `sbatch`: Submit non-interactive (batch) jobs to the scheduler
 * `squeue`: List jobs in the queue
 * `scancel`: Cancel a job
-* `salloc`: Submit interactive jobs to the scheduler
 * `srun`: Used within a batch job script or interactive job session to start a parallel program
 
 Full documentation on Slurm on ARCHER2 can be found in the [Running Jobs on ARCHER2](https://docs.archer2.ac.uk/user-guide/scheduler/) section of the ARCHER2 documentations.
@@ -162,6 +161,7 @@ two nodes.
 module load xthi
 
 export OMP_NUM_THREADS=1
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # srun to launch the executable
 srun --hint=nomultithread --distribution=block:block xthi
@@ -762,9 +762,9 @@ variable. Specifically:
    - Set the `OMP_PLACES` environment variable to `cores` with `export OMP_PLACES=cores` in 
      your job submission script
 
-As an example, consider the job script below that runs across 2 nodes with 8 MPI processes
-per node and 16 OpenMP threads per MPI process (so all 128 physical cores on both nodes are used,
-256 physical cores in total).
+As an example, consider the job script below that runs across 4 nodes with 8 MPI processes
+per node and 16 OpenMP threads per MPI process (so all 128 physical cores on 4 nodes are used,
+512 physical cores in total).
 
 ```
 #!/bin/bash
@@ -773,7 +773,7 @@ per node and 16 OpenMP threads per MPI process (so all 128 physical cores on bot
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=16
 #SBATCH --time=0:10:0
-#SBATCH --account=ta082
+#SBATCH --account=ta130
 #SBATCH --partition=standard
 #SBATCH --qos=short
 
@@ -782,6 +782,7 @@ module load xthi
 
 export OMP_NUM_THREADS=16
 export OMP_PLACES=cores
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 # srun to launch the executable
 srun --hint=nomultithread --distribution=block:block xthi
@@ -1342,7 +1343,7 @@ OpenMP threading) within an interactive job you would issue the following comman
 ```
 auser@ln01:~> export OMP_NUM_THREADS=1
 auser@ln01:~> module load xthi
-auser@ln01:~> srun --partition=standard --qos=short --nodes=2 --ntasks-per-node=128 --cpus-per-task=1 --time=0:10:0 --account=ta082 xthi
+auser@ln01:~> srun --partition=standard --qos=short --nodes=2 --ntasks-per-node=128 --cpus-per-task=1 --time=0:10:0 --account=ta130 xthi
 ```
 {: .language-bash}
 ```
