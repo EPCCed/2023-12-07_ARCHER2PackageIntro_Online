@@ -51,11 +51,12 @@ Compute node summary:
 
 ## Storage
 
-There are three different storage systems available on the current ARCHER2 service:
+There are four different storage systems available on the current ARCHER2 service:
 
 * Home file systems
 * Work file systems
-* RDF as a Service (RDFaaS)
+* NVMe solid state file system (not discussed in this course)
+* RDF as a Service (RDFaaS) (not discussed in this course)
 
 ### Home
 
@@ -108,12 +109,8 @@ will be completely up to date as they are controlled by SAFE.)
 > ## Restoring data from backups
 > The home file systems are fully backed up. Full snapshots are taken weekly (for each of the
 > past two weeks), daily (for each of the past two days) and hourly (for each of the last
-> 6 hours). You can access the snapshots at the `/home1/.snapshot`, `/home2/.snapshot`,
-> `/home3/.snapshot` and `/home4/.snapshot` directories depending on which of the file systems
-> you have your home directories on. You can find out which file system your home directory
-> is on with the command:
-> ```
-> readlink -f $HOME
+> 6 hours). You can access the snapshots at the `.snapshot` directory in any directory on
+> the home file systems.
 > ```
 {: .callout}
 
