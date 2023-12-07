@@ -95,19 +95,15 @@ will pick up your initial, single-use password from the *View login password* bu
 the appropriate login account page. When you use this password to log in to ARCHER2, you
 will be immediately asked to change this.
 
-> ## SAFE is not kept up to date with your actual password
-> Note that the login account password stored in SAFE is not kept up to date with your
-> password on the ARCHER2 machine once you have changed it. If you forget your password,
-> you will need to reset it as described below.
-{: .callout}
+**Registering and resetting TOTP**. SAFE allows you to register your TOTP with an 
+authenticator app for use to log on to ARCHER2. Use the *Set-MFA Token* button to
+display a QR code and key string that can be entered into the Authenticator app
+to start generating TOTP linked to your account. You need to enter a code generated
+by the app to verify the TOTP setting. If you lose access to your authenticator
+app you can use the same button to re-register MFA against your account with a
+different key/QR code.
 
-**Resetting your login password**. If you forget your login password or need to reset 
-it for any other reason, you can use the *Request Password Reset* button to ask for
-a new single-use password to log into the service. You will be notified by e-mail once
-the new password is available for you to pick up and you use it exactly the same way
-as your initial password.
-
-**Adding SSH keys to your account**. To log into ARCHER2 you need to use both a password
+**Adding SSH keys to your account**. To log into ARCHER2 you need to use both a TOTP
 and an key pair SSH protected by a strong passphrase. Once you have generated your 
 SSH key pair you use SAFE to associate the public part of the key pair with your account.
 Use the *Add credential* button and then select the *SSH key* option to associate the
